@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = new mongoose.Schema({
-  _id: {
-    type: String,
-  },
+var accountSocial = {
   social_type: {
     type: String,
   },
@@ -25,4 +22,7 @@ module.exports = new mongoose.Schema({
   social_phone: {
     type: String,
   }
-});
+};
+
+module.exports = new mongoose.Schema(accountSocial);
+module.exports.accountSocial = accountSocial;

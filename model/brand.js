@@ -1,9 +1,6 @@
 var mongoose = require('mongoose');
 
-module.exports = new mongoose.Schema({
-  _id: {
-    type: String
-  },
+var brand = {
   logo_url: {
     type: String
   },
@@ -55,4 +52,7 @@ module.exports = new mongoose.Schema({
   brand_name: {
     type: String
   }
-})
+};
+
+module.exports = new mongoose.Schema(brand);
+module.exports.brand = brand;

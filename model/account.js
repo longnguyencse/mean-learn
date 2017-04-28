@@ -1,10 +1,9 @@
 var mongoose = require('mongoose');
+var AccountSocial = require('./account_social');
+var AccountSetting = require('./account_setting');
+var Brand = require('./brand');
 
-module.exports = new mongoose.Schema({
-  _id: {
-    type: String,
-    required: true,
-  },
+var account = {
   email: {
     type: String,
   },
@@ -31,5 +30,11 @@ module.exports = new mongoose.Schema({
   },
   avatar_url: {
     type: String,
-  }
-});
+  },
+  account_setting: AccountSetting.accountSetting,
+  account_social: AccountSocial.accountSocial,
+  brands: [Brand.brand]
+};
+
+module.exports = new mongoose.Schema(account);
+module.exports.account = account;

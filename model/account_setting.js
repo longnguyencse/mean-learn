@@ -1,8 +1,7 @@
-var mongoose = new('mongoose');
+var mongoose = require('mongoose');
 
-module.exports = new mongoose.Schema({
-  _id: {
-    type: String,
-    required: true
-  },
-})
+var accountSetting = {
+};
+
+module.exports = new mongoose.Schema(accountSetting);
+module.exports.accountSetting = accountSetting;

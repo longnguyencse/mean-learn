@@ -18,20 +18,33 @@ module.exports = function(wagner) {
     console.log('Mongoose default connection disconnected');
   });
 
-
-  var Account = mongoose.model('Account', require('./account.js'), 'accounts');
-  var Brand = mongoose.model('Brand', require('./brand.js'), 'brands');
+  var AccountSetting = mongoose.model('AccountSetting', require('./account_setting'), 'account_settings');
+  var AccountSocial = mongoose.model('AccountSocial', require('./account_social'), 'account_socials');
+  var Account = mongoose.model('Account', require('./account'), 'accounts');
+  var Brand = mongoose.model('Brand', require('./brand'), 'brands');
   var Product = mongoose.model('Product', require('./product'), 'products');
+  var Notification = mongoose.model('Notification', require('./notification'), 'notifications');
 
-  new Account({_id:1}).save(function(err) {
-    if(err) console.log(err);
-  });
-  new Brand({_id:1}).save(function(err) {
-    if(err) console.log(err);
-  });
-  new Product({_id:1}).save(function(err) {
-    if(err) console.log(err);
-  });
+  for(var i=0; i<100; i++) {
+    new AccountSetting({}).save(function(err) {
+      if(err) console.log(err);
+    })
+    new AccountSocial({}).save(function(err) {
+      if(err) console.log(err);
+    })
+    new Account({}).save(function(err) {
+      if(err) console.log(err);
+    });
+    new Brand({}).save(function(err) {
+      if(err) console.log(err);
+    });
+    new Product({}).save(function(err) {
+      if(err) console.log(err);
+    });
+    new Notification({}).save(function(err) {
+      if(err) console.log(err);
+    })
+  }
 
   var models = {
     Account: Account,

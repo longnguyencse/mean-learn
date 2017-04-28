@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');
+var Account = require('./account');
+var Brand = require('./brand');
 
 module.exports = new mongoose.Schema({
-  _id: {
-    type: String
-  },
   title: {
     type: String
   },
@@ -27,5 +26,7 @@ module.exports = new mongoose.Schema({
   },
   photo_url: {
     type: String
-  }
+  },
+  account:Account.account,
+  brand: Brand.brand
 })
