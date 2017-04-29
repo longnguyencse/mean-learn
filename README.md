@@ -5,6 +5,7 @@ npm install
 *** Express : 
 
 *** AngularJs version: 2.0.0-alpha.55
+
 command lind: npm install --save angular2@2.0.0-alpha.55
 
 +-- DEPENDENCY es6-promise@^3.0.2
