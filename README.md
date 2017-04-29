@@ -21,10 +21,13 @@ command lind: npm install --save angular2@2.0.0-alpha.55
 *** Mongodb: mongoese version
 
 *** download lib and save in package.json
+
 npm install --save  es6-promise@^3.0.2
+
 --save: add dependecies package.json 
 
 ************************************
+
 Other lib
 *** Run:
 node server.js
