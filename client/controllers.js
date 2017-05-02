@@ -105,6 +105,7 @@ exports.CheckoutController = function($scope, $user, $http) {
 };
 
 exports.NavBarController = function($scope, $user) {
+  console.log($scope, $user);
   $scope.user = $user;
 
   setTimeout(function() {
