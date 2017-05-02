@@ -1,8 +1,7 @@
-function setupAuth(Account, app) {
+function setupAuth(Account, Config, app) {
   var passport = require('passport');
   var FacebookStrategy = require('passport-facebook').Strategy;
-  const FACEBOOK_CLIENT_ID = '116554458905472';
-  const FACEBOOK_CLIENT_SECRET = '3a72f7d475e01a551555aabc66b6914f';
+
   // High level serialize/de-serialize configuration for passport
   passport.serializeUser(function(user, done) {
     done(null, user._id);
@@ -17,10 +16,10 @@ function setupAuth(Account, app) {
   // Facebook-specific
   passport.use(new FacebookStrategy(
     {
-      clientID: FACEBOOK_CLIENT_ID,
-      clientSecret: FACEBOOK_CLIENT_SECRET,
+      clientID: Config.facebookClientId,
+      clientSecret: Config.facebookClientSecret,
       callbackURL: 'http://localhost:3000/auth/facebook/callback',
-      profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified']
+      profileFields: ['id', 'emails', 'name']
     },
     function(accessToken, refreshToken, profile, done) {
       if (!profile.emails || !profile.emails.length) {
@@ -51,12 +50,24 @@ function setupAuth(Account, app) {
 
   // Express routes for auth
   app.get('/auth/facebook',
-    passport.authenticate('facebook', { scope: ['email'] }));
+    function(req, res, next) {
+      var redirect = encodeURIComponent(req.query.redirect || '/');
+
+      passport.authenticate('facebook',
+        {
+          scope: ['email'],
+          callbackURL: 'http://localhost:3000/auth/facebook/callback?redirect=' + redirect
+        })(req, res, next);
+    });
 
   app.get('/auth/facebook/callback',
-    passport.authenticate('facebook', { failureRedirect: '/fail' }),
+    function(req, res, next) {
+      var url = 'http://localhost:3000/auth/facebook/callback?redirect=' +
+        encodeURIComponent(req.query.redirect);
+      passport.authenticate('facebook', { callbackURL: url })(req, res, next);
+    },
     function(req, res) {
-      res.send('Welcome, '); //+ req.user.profile.username
+      res.redirect(req.query.redirect);
     });
 }
 
