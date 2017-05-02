@@ -14,6 +14,9 @@ app.use("/test", function (req, res) {
     res.send("Hello word");
 });
 
+app.use("/", function (req, res) {
+    res.sendfile("client/index.html");
+});
 app.listen(3000, function () {
     console.log("app is listening on port 3000");
 });
