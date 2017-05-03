@@ -31,3 +31,16 @@ npm install --save  es6-promise@^3.0.2
 Other lib
 *** Run:
 node server.js
+
+#TODO
+Estimate time: 24 days (31/5/2017)
+
+- [ ] Login facebook
+- [ ] Create form allow user to create Product, Brand
+- [ ] Code api: /products[get,post,put], /products/:product_id[get,put], brand/:brand_id[get], /me[get], ...
+- [ ] Create home template show user product/brand
+- [ ] Create product template to create or update product
+- [ ] Create brand template to create or update brand infomation
+- [ ] Integrate facebook post
+- [ ] Research how to deploy web app to live server
+- [ ] Test, Deploy
