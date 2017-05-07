@@ -25,26 +25,26 @@ module.exports = function(wagner) {
   var Product = mongoose.model('Product', require('./product'), 'products');
   var Notification = mongoose.model('Notification', require('./notification'), 'notifications');
 
-  for(var i=0; i<100; i++) {
-    new AccountSetting({}).save(function(err) {
-      if(err) console.log(err);
-    })
-    new AccountSocial({}).save(function(err) {
-      if(err) console.log(err);
-    })
-    new Account({}).save(function(err) {
-      if(err) console.log(err);
-    });
-    new Brand({}).save(function(err) {
-      if(err) console.log(err);
-    });
-    new Product({}).save(function(err) {
-      if(err) console.log(err);
-    });
-    new Notification({}).save(function(err) {
-      if(err) console.log(err);
-    })
-  }
+  // for(var i=0; i<100; i++) {
+  //   new AccountSetting({}).save(function(err) {
+  //     if(err) console.log(err);
+  //   })
+  //   new AccountSocial({}).save(function(err) {
+  //     if(err) console.log(err);
+  //   })
+  //   new Account({}).save(function(err) {
+  //     if(err) console.log(err);
+  //   });
+  //   new Brand({}).save(function(err) {
+  //     if(err) console.log(err);
+  //   });
+  //   new Product({}).save(function(err) {
+  //     if(err) console.log(err);
+  //   });
+  //   new Notification({}).save(function(err) {
+  //     if(err) console.log(err);
+  //   })
+  // }
 
   var models = {
     Account: Account,

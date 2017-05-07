@@ -1,0 +1,27 @@
+<div class="add-brand">
+  <form novalidate>
+    <label>brand_name: <input type="text" ng-model="brand.brand_name"></br></label>
+    <label>logo_url: <input type="text" ng-model="brand.logo_url" required /></label></br>
+    <label>establisted: <input type="text" ng-model="brand.establisted" required></br></label>
+    <label>create_time: <input type="text" ng-model="brand.create_time" required></br></label>
+    <label>update_time: <input type="text" ng-model="brand.update_time" required></br></label>
+    <label>brand_address: <input type="text" ng-model="brand.brand_address"></br></label>
+    <label>post_code: <input type="text" ng-model="brand.post_code"></br></label>
+    <label>fax: <input type="text" ng-model="brand.fax"></br></label>
+    <label>phone: <input type="text" ng-model="brand.phone"></br></label>
+    <label>email: <input type="text" ng-model="brand.email"></br></label>
+    <label>country: <input type="text" ng-model="brand.country"></br></label>
+    <label>country_code: <input type="text" ng-model="brand.country_code"></br></label>
+    <label>blog_link: <input type="text" ng-model="brand.blog_link"></br></label>
+    <label>facebook_link: <input type="text" ng-model="brand.facebook_link"></br></label>
+    <label>twitter_link: <input type="text" ng-model="brand.twitter_link"></br></label>
+    <label>g_lat: <input type="text" ng-model="brand.g_lat"></br></label>
+    <label>g_long: <input type="text" ng-model="brand.g_long"></br></label>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="addBrand(brand)" value="Save" />
+  </form>
+  <pre ng-show="done">
+    Added successful !!!
+  </pre>
+  <pre>brand = {{brand | json}}</pre>
+</div>

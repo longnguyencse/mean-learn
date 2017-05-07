@@ -1,0 +1,20 @@
+<div class="add-product">
+  <form novalidate>
+    <label>title: <input type="text" ng-model="product.title" required /></label></br>
+    <label>product_type: <input type="text" ng-model="product.product_type" required></br></label>
+    <label>price: <input type="text" ng-model="product.price" required></br></label>
+    <label>num_view: <input type="text" ng-model="product.num_view" required></br></label>
+    <label>num_like: <input type="text" ng-model="product.num_like"></br></label>
+    <label>num_bookmark: <input type="text" ng-model="product.num_bookmark"></br></label>
+    <label>currency: <input type="text" ng-model="product.currency"></br></label>
+    <label>photo_url: <input type="text" ng-model="product.photo_url"></br></label>
+    <label>account: <input type="text" ng-model="product.account"></br></label>
+    <label>brand: <input type="text" ng-model="product.brand"></br></label>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="addProduct(product)" value="Save" />
+  </form>
+  <pre ng-show="done">
+    Added successful !!!
+  </pre>
+  <pre>product = {{product | json}}</pre>
+</div>

@@ -7,6 +7,39 @@ module.exports = function(wagner) {
 
   api.use(bodyparser.json());
 
+  api.post('/account', wagner.invoke(function(Account) {
+    return function(req, res) {
+      var account = new Account(req.body);
+      account.save(function(err) {
+        if (err) res.end('Error!!!');
+
+        res.end("Account added!!!");
+      })
+    }
+  }));
+
+  api.post('/brand', wagner.invoke(function(Brand) {
+    return function(req, res) {
+      var brand = new Brand(req.body);
+      brand.save(function(err) {
+        if (err) res.end('Error!!!');
+
+        res.end("Brand added!!!");
+      })
+    }
+  }));
+
+  api.post('/product', wagner.invoke(function(Product) {
+    return function(req, res) {
+      var product = new Product(req.body);
+      product.save(function(err) {
+        if (err) res.end('Error!!!');
+
+        res.end("Product added!!!");
+      })
+    }
+  }));
+
   api.get('/account', wagner.invoke(function(Account) {
     return function(req,res) {
       Account.
@@ -43,6 +76,8 @@ module.exports = function(wagner) {
         status(status.UNAUTHORIZED).
         json({error: 'Not logged in'});
     }
+
+    req.user.populate({ path: 'data.cart.product', model: 'Product' }, handleOne.bind(null, 'user', res));
   });
 
   return api;

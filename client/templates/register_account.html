@@ -1,0 +1,22 @@
+<div class="register-account">
+  <form novalidate>
+    <label>Email: <input type="email" ng-model="user.email" required /></label></br>
+    <label>Name: <input type="text" ng-model="user.name" required></br></label>
+    <label>Password: <input type="password" ng-model="user.password" required></br></label>
+    <label>Phone: <input type="text" ng-model="user.phone" required></br></label>
+    <label>Nationality: <input type="text" ng-model="user.nationality"></br></label>
+    <label>Language: <input type="text" ng-model="user.language"></br></label>
+    <label>Birthday: <input type="text" ng-model="user.birthday"></br></label>
+    <label>Gender: <input type="text" ng-model="user.gender"></br></label>
+    <label>Avatar Url: <input type="text" ng-model="user.avatar_url"></br></label>
+    <label>Account Setting: <input type="text" ng-model="user.account_setting"></br></label>
+    <label>Account Social: <input type="text" ng-model="user.account_social"></br></label>
+    <label>Brands: <input type="text" ng-model="user.brands"></br></label>
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="register(user)" value="Save" />
+  </form>
+  <pre ng-show="done">
+    Register successful !!!
+  </pre>
+  <pre>user = {{user | json}}</pre>
+</div>

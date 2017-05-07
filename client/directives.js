@@ -1,3 +1,24 @@
+exports.registerAccount = function() {
+  return {
+    controller: 'RegisterAccountController',
+    templateUrl: '/client/templates/register_account.html'
+  };
+};
+
+exports.addBrand = function() {
+  return {
+    controller: 'AddBrandController',
+    templateUrl: '/client/templates/add_brand.html'
+  };
+};
+
+exports.addProduct = function() {
+  return {
+    controller: 'AddProductController',
+    templateUrl: '/client/templates/add_product.html'
+  };
+};
+
 exports.addToCart = function() {
   return {
     controller: 'AddToCartController',

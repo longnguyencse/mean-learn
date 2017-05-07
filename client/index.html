@@ -9,12 +9,27 @@
     <script type="text/javascript" src="/client/bin/index.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-    <link rel="stylesheet" type="text/css" href="/public/css/mean-retail.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="/public/css/mean-retail.css" /> -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
   </head>
   <body>
-    <nav-bar></nav-bar>
-
-    <div class="content-wrapper" ng-view></div>
+    <table>
+      <tr>
+        <th>Register Account</th>
+        <th>Add Brand</th>
+        <th>Add Product</th>
+      </tr>
+      <tr>
+        <td>
+          <register-account></register-account>
+        </td>
+        <td>
+          <add-brand></add-brand>
+        </td>
+        <td>
+          <add-product></add-product>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>

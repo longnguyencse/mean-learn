@@ -5,8 +5,6 @@ var _ = require('underscore');
 
 var components = angular.module('mean-retail.components', ['ng']);
 
-console.log('test');
-
 _.each(controllers, function(controller, name) {
   components.controller(name, controller);
 });
@@ -23,11 +21,8 @@ var app = angular.module('mean-retail', ['mean-retail.components', 'ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider.
-    when('/category/:category', {
+    when('/brand/:id', {
       templateUrl: '/client/templates/category_view.html'
-    }).
-    when('/checkout', {
-      template: '<checkout></checkout>'
     }).
     when('/product/:id', {
       template: '<product-details></product-details>'
