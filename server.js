@@ -2,13 +2,13 @@
 var express = require('express');
 var wagner = require('wagner-core');
 
-require('./model/models')(wagner);
+require('./server/models')(wagner);
 
 var app = express();
 
 //wagner.invoke(require('./router/auth'), {app: app});
 
-app.use('/api/v1', require('./router/api')(wagner));
+app.use('/api/v1', require('./server/api')(wagner));
 
 app.use("/test", function (req, res) {
     res.send("Hello word");
