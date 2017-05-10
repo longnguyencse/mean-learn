@@ -44,3 +44,7 @@ Estimate time: 24 days (31/5/2017)
 - [ ] Integrate facebook post
 - [ ] Research how to deploy web app to live server
 - [ ] Test, Deploy
+
+# API Doc
+
+- Reference Postman API: https://www.getpostman.com/collections/c9f551e59369732d8cba
