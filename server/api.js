@@ -18,6 +18,17 @@ module.exports = function(wagner) {
     }
   }));
 
+  api.post('/account-social', wagner.invoke(function(AccountSocial) {
+    return function(req, res) {
+      var accountSocial = new AccountSocial(req.body);
+      accountSocial.save(function(err) {
+        if (err) res.end('Error!!!');
+
+        res.end("Account Social added!!!");
+      })
+    }
+  }));
+
   api.post('/brand', wagner.invoke(function(Brand) {
     return function(req, res) {
       var brand = new Brand(req.body);
@@ -47,6 +58,16 @@ module.exports = function(wagner) {
         .sort()
         .limit(10).
         exec(handleMany.bind(null, 'accounts', res));
+    }
+  }));
+
+  api.get('/account-social', wagner.invoke(function(AccountSocial) {
+    return function(req,res) {
+      AccountSocial.
+        find()
+        .sort()
+        .limit(10).
+        exec(handleMany.bind(null, 'account-socials', res));
     }
   }));
 

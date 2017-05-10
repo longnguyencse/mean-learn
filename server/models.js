@@ -47,6 +47,7 @@ module.exports = function(wagner) {
   // }
 
   var models = {
+    AccountSocial: AccountSocial,
     Account: Account,
     Brand: Brand,
     Product: Product
