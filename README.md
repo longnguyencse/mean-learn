@@ -37,7 +37,7 @@ Estimate time: 24 days (31/5/2017)
 
 - [ ] Login facebook
 - [x] Create form allow user to create Product, Brand
-- [ ] Code api: /products[get,post,put], /products/:product_id[get,put], brand/:brand_id[get], /me[get], ...
+- [x] Code api: /account[get,post], /account-social[get,post], /products[get,post], brand[post,get], /me[get], ...
 - [ ] Create home template show user product/brand
 - [ ] Create product template to create or update product
 - [ ] Create brand template to create or update brand infomation
