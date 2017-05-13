@@ -35,7 +35,7 @@ node server.js
 #TODO
 Estimate time: 24 days (31/5/2017)
 
-- [ ] Login facebook
+- [x] Login facebook
 - [x] Create form allow user to create Product, Brand
 - [x] Code api: /account[get,post], /account-social[get,post], /products[get,post], brand[post,get], /me[get], ...
 - [ ] Create home template show user product/brand
