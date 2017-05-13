@@ -13,7 +13,7 @@
         </a>
       </div>
       <div class="user" ng-show="user.user">
-        <img ng-src="{{user.user.profile.picture}}" />
+        <img ng-src="{{user.user.avatar_url}}" />
       </div>
       <div class="login" ng-show="!user.user">
         <a href="/auth/facebook?redirect=%2Fclient">

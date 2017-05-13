@@ -19,24 +19,43 @@ function setupAuth(Account, Config, app) {
       clientID: Config.facebookClientId,
       clientSecret: Config.facebookClientSecret,
       callbackURL: 'http://localhost:3000/auth/facebook/callback',
-      profileFields: ['id', 'emails', 'name']
+      profileFields: ['emails', 'name']
     },
     function(accessToken, refreshToken, profile, done) {
       if (!profile.emails || !profile.emails.length) {
         return done('No emails associated with this account!');
       }
 
+      console.log(profile);
+
       Account.findOneAndUpdate(
-        { 'data.oauth': profile.id },
+        { 'account_social.token': profile.id },
         {
           $set: {
-            'profile.username': profile.emails[0].value,
-            'profile.picture': 'http://graph.facebook.com/' +
-              profile.id.toString() + '/picture?type=large'
+            'email': profile.emails[0].value,
+            'name': profile.username,
+            'password': undefined,
+            'phone': undefined,
+            'nationality': undefined,
+            'language': undefined,
+            'birthday': undefined,
+            'gender': profile.gender,
+            'avatar_url': 'http://graph.facebook.com/' +
+              profile.id.toString() + '/picture?type=large',
+            'account_setting': undefined,
+            'account_social.social_type': 'facebook',
+            'account_social.token': profile.id,
+            'account_social.expire_time': undefined,
+            'account_social.social_name': profile.displayName,
+            'account_social.social_birthday': undefined,
+            'account_social.social_email': profile.emails[0].value,
+            'account_social.social_phone': undefined,
+            'brands': undefined
           }
         },
         { 'new': true, upsert: true, runValidators: true },
         function(error, user) {
+          if(error) console.log(error);
           done(error, user);
         });
     }));
