@@ -8,31 +8,27 @@
     </script>
     <script type="text/javascript" src="/client/bin/index.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="/public/css/mean-retail.css" />
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <!--
-    <table>
-      <tr>
-        <th>Register Account</th>
-        <th>Add Brand</th>
-        <th>Add Product</th>
-      </tr>
-      <tr>
-        <td>
-          <register-account></register-account>
-        </td>
-        <td>
-          <add-brand></add-brand>
-        </td>
-        <td>
-          <add-product></add-product>
-        </td>
-      </tr>
-    </table>
-    -->
-    <nav-bar></nav-bar>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#register">Register Account</a></li>
+          <li><a href="#add-brand">Add Brand</a></li>
+          <li><a href="#add-product">Add Product</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div ng-view class="container">
+    </div>
   </body>
 </html>

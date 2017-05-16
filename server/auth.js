@@ -26,8 +26,6 @@ function setupAuth(Account, Config, app) {
         return done('No emails associated with this account!');
       }
 
-      console.log(profile);
-
       Account.findOneAndUpdate(
         { 'account_social.token': profile.id },
         {

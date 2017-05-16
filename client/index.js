@@ -21,10 +21,20 @@ var app = angular.module('mean-retail', ['mean-retail.components', 'ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider.
-    when('/brand/:id', {
+    when("/register", {
+        templateUrl : "/client/templates/register_account.html"
+    })
+    .when("/add-brand", {
+        templateUrl : "/client/templates/add_brand.html"
+    })
+    .when("/add-product", {
+        templateUrl : "/client/templates/add_product.html"
+    })
+    .when('/brand/:id', {
       templateUrl: '/client/templates/category_view.html'
-    }).
-    when('/product/:id', {
+    })
+    .when('/product/:id', {
       template: '<product-details></product-details>'
     });
+
 });

@@ -1,20 +1,35 @@
-<div class="add-product">
-  <form novalidate>
-    <label>title: <input type="text" ng-model="product.title" required /></label></br>
-    <label>product_type: <input type="text" ng-model="product.product_type" required></br></label>
-    <label>price: <input type="text" ng-model="product.price" required></br></label>
-    <label>num_view: <input type="text" ng-model="product.num_view" required></br></label>
-    <label>num_like: <input type="text" ng-model="product.num_like"></br></label>
-    <label>num_bookmark: <input type="text" ng-model="product.num_bookmark"></br></label>
-    <label>currency: <input type="text" ng-model="product.currency"></br></label>
-    <label>photo_url: <input type="text" ng-model="product.photo_url"></br></label>
-    <label>account: <input type="text" ng-model="product.account"></br></label>
-    <label>brand: <input type="text" ng-model="product.brand"></br></label>
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="addProduct(product)" value="Save" />
-  </form>
-  <pre ng-show="done">
-    Added successful !!!
-  </pre>
-  <pre>product = {{product | json}}</pre>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h2>Vertical (basic) form</h2>
+      <form>
+        <div class="form-group">
+          <label for="title">Title: </label>
+          <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" ng-model="product.title" />
+        </div>
+        <div class="form-group">
+          <label for="type">Type: </label>
+          <input type="text" class="form-control" id="type" name="type" ng-model="product.product_type" />
+        </div>
+        <div class="form-group">
+          <label for="price">Price: </label>
+          <input type="text" class="form-control" id="price" placeholder="Enter price" name="price" ng-model="product.price" />
+        </div>
+        <div class="form-group">
+          <label for="currency">Currency: </label>
+          <input type="text" class="form-control" id="currency" placeholder="Enter currency" name="currency" ng-model="product.currency" />
+        </div>
+        <div class="form-group">
+          <label for="photo">Photo: </label>
+          <input type="text" class="form-control" id="photo" name="photo" ng-model="product.photo_url" />
+        </div>
+        <div class="form-group">
+          <input type="button" class="btn btn-primary" ng-click="reset()" value="Reset" />
+          <input type="submit" class="btn btn-primary" ng-click="addProduct(product)" value="Save" />
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
 </div>

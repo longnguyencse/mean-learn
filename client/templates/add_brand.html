@@ -1,27 +1,63 @@
-<div class="add-brand">
-  <form novalidate>
-    <label>brand_name: <input type="text" ng-model="brand.brand_name"></br></label>
-    <label>logo_url: <input type="text" ng-model="brand.logo_url" required /></label></br>
-    <label>establisted: <input type="text" ng-model="brand.establisted" required></br></label>
-    <label>create_time: <input type="text" ng-model="brand.create_time" required></br></label>
-    <label>update_time: <input type="text" ng-model="brand.update_time" required></br></label>
-    <label>brand_address: <input type="text" ng-model="brand.brand_address"></br></label>
-    <label>post_code: <input type="text" ng-model="brand.post_code"></br></label>
-    <label>fax: <input type="text" ng-model="brand.fax"></br></label>
-    <label>phone: <input type="text" ng-model="brand.phone"></br></label>
-    <label>email: <input type="text" ng-model="brand.email"></br></label>
-    <label>country: <input type="text" ng-model="brand.country"></br></label>
-    <label>country_code: <input type="text" ng-model="brand.country_code"></br></label>
-    <label>blog_link: <input type="text" ng-model="brand.blog_link"></br></label>
-    <label>facebook_link: <input type="text" ng-model="brand.facebook_link"></br></label>
-    <label>twitter_link: <input type="text" ng-model="brand.twitter_link"></br></label>
-    <label>g_lat: <input type="text" ng-model="brand.g_lat"></br></label>
-    <label>g_long: <input type="text" ng-model="brand.g_long"></br></label>
-    <input type="button" ng-click="reset()" value="Reset" />
-    <input type="submit" ng-click="addBrand(brand)" value="Save" />
-  </form>
-  <pre ng-show="done">
-    Added successful !!!
-  </pre>
-  <pre>brand = {{brand | json}}</pre>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h2>Vertical (basic) form</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name: </label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" ng-model="brand.brand_name" />
+        </div>
+        <div class="form-group">
+          <label for="logo">Logo: </label>
+          <input type="text" class="form-control" id="logo" name="name" ng-model="brand.logo_url" />
+        </div>
+        <div class="form-group">
+          <label for="address">Address: </label>
+          <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" ng-model="brand.brand_address" />
+        </div>
+        <div class="form-group">
+          <label for="pc">Post code: </label>
+          <input type="text" class="form-control" id="pc" placeholder="Enter post code" name="pc" ng-model="brand.post_code" />
+        </div>
+        <div class="form-group">
+          <label for="fax">Fax: </label>
+          <input type="text" class="form-control" id="fax" name="fax" ng-model="brand.fax" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone: </label>
+          <input type="text" class="form-control" id="phone" name="phone" ng-model="brand.phone" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email: </label>
+          <input type="text" class="form-control" id="email" name="email" ng-model="brand.email" />
+        </div>
+        <div class="form-group">
+          <label for="country">Country: </label>
+          <input type="text" class="form-control" id="country" name="country" ng-model="brand.country" />
+        </div>
+        <div class="form-group">
+          <label for="ccode">Country code: </label>
+          <input type="text" class="form-control" id="ccode" name="ccode" ng-model="brand.country_code" />
+        </div>
+        <div class="form-group">
+          <label for="blog">Blog: </label>
+          <input type="text" class="form-control" id="blog" name="blog" ng-model="brand.blog_link" />
+        </div>
+        <div class="form-group">
+          <label for="face">Facebook: </label>
+          <input type="text" class="form-control" id="face" name="face" ng-model="brand.facebook_link" />
+        </div>
+        <div class="form-group">
+          <label for="twitter">Twitter: </label>
+          <input type="text" class="form-control" id="twitter" name="twitter" ng-model="brand.twitter_link" />
+        </div>
+        <div class="form-group">
+          <input type="button" class="btn btn-primary" ng-click="reset()" value="Reset" />
+          <input type="submit" class="btn btn-primary" ng-click="addBrand(brand)" value="Save" />
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
 </div>
