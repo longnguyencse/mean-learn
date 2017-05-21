@@ -38,9 +38,10 @@ Estimate time: 24 days (31/5/2017)
 - [x] Login facebook
 - [x] Create form allow user to create Product, Brand
 - [x] Code api: /account[get,post], /account-social[get,post], /products[get,post], brand[post,get], /me[get], ...
-- [ ] Create home template show user product/brand
-- [ ] Create product template to create or update product
-- [ ] Create brand template to create or update brand infomation
+- [x] Create home template show user product/brand
+- [x] Create product template to create or update product
+- [x] Create brand template to create or update brand infomation\
+- [ ] Add validations form, ui/ux
 - [ ] Integrate facebook post
 - [ ] Research how to deploy web app to live server
 - [ ] Test, Deploy
