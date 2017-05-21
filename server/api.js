@@ -40,6 +40,13 @@ module.exports = function(wagner) {
     }
   }));
 
+  api.get('/brand/id/:id', wagner.invoke(function(Brand) {
+    return function(req, res) {
+      Brand.findOne({ _id: req.params.id },
+        handleOne.bind(null, 'brand', res));
+    };
+  }));
+
   api.post('/product', wagner.invoke(function(Product) {
     return function(req, res) {
       var product = new Product(req.body);
@@ -99,6 +106,28 @@ module.exports = function(wagner) {
     }
     req.user.populate({ path: 'data.cart.product', model: 'Product' }, handleOne.bind(null, 'user', res));
   });
+
+  api.put('/me/brand', wagner.invoke(function(Account) {
+    return function(req, res) {
+      try {
+        var brands = req.body.brands;
+      } catch(e) {
+        return res.
+          status(status.BAD_REQUEST).
+          json({ error: 'No brand specified!' });
+      }
+
+      req.user.brands = brands;
+      req.user.save(function(error, user) {
+        if (error) {
+          return res.
+            status(status.INTERNAL_SERVER_ERROR).
+            json({ error: error.toString() });
+        }
+        return res.json({ user: user });
+      });
+    };
+  }));
 
   return api;
 };

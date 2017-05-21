@@ -32,23 +32,25 @@ function setupAuth(Account, Config, app) {
           $set: {
             'email': profile.emails[0].value,
             'name': profile.username,
-            'password': undefined,
-            'phone': undefined,
-            'nationality': undefined,
-            'language': undefined,
-            'birthday': undefined,
+            'password': '',
+            'phone': '',
+            'nationality': '',
+            'language': '',
+            'birthday': '',
             'gender': profile.gender,
             'avatar_url': 'http://graph.facebook.com/' +
-              profile.id.toString() + '/picture?type=large',
-            'account_setting': undefined,
-            'account_social.social_type': 'facebook',
-            'account_social.token': profile.id,
-            'account_social.expire_time': undefined,
-            'account_social.social_name': profile.displayName,
-            'account_social.social_birthday': undefined,
-            'account_social.social_email': profile.emails[0].value,
-            'account_social.social_phone': undefined,
-            'brands': undefined
+              profile.id.toString() + '/picture?type=small',
+            'account_setting': {},
+            'account_social': {
+              'social_type': 'facebook',
+              'token': profile.id,
+              'expire_time': '',
+              'social_name': profile.displayName,
+              'social_birthday': '',
+              'social_email': profile.emails[0].value,
+              'social_phone': ''
+            },
+            'brands': []
           }
         },
         { 'new': true, upsert: true, runValidators: true },
