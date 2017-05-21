@@ -5,44 +5,24 @@
       <h2>Vertical (basic) form</h2>
       <form>
         <div class="form-group">
-          <label for="email">Email: </label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" ng-model="user.email" required />
-        </div>
-        <div class="form-group">
           <label for="name">Name: </label>
           <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" ng-model="user.name" required />
         </div>
         <div class="form-group">
+          <label for="email">Email: </label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" ng-model="user.email" required />
+        </div>
+        <div class="form-group">
           <label for="pwd">Password: </label>
-          <input type="text" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="user.password" />
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="user.password" required/>
         </div>
         <div class="form-group">
-          <label for="phone">Phone: </label>
-          <input type="text" class="form-control" id="phone" placeholder="Enter phone number" name="phone" ng-model="user.phone" />
+          <label for="cpwd">Confirm Password: </label>
+          <input type="password" class="form-control" id="cpwd" placeholder="Confirm password" name="cpwd" required/>
         </div>
+        <div>{{ user | json }}</div>
         <div class="form-group">
-          <label for="nation">Nationality: </label>
-          <input type="text" class="form-control" id="nation" name="nation" ng-model="user.nationality" />
-        </div>
-        <div class="form-group">
-          <label for="lang">Language: </label>
-          <input type="text" class="form-control" id="lang" name="lang" ng-model="user.language" />
-        </div>
-        <div class="form-group">
-          <label for="bd">Birthday: </label>
-          <input type="text" class="form-control" id="bd" name="bd" ng-model="user.birthday" />
-        </div>
-        <div class="form-group">
-          <label for="gender">Gender: </label>
-          <input type="text" class="form-control" id="gender" name="gender" ng-model="user.gender" />
-        </div>
-        <div class="form-group">
-          <label for="avatar">Avatar Url: </label>
-          <input type="text" class="form-control" id="avatar" name="avatar" ng-model="user.avatar_url" />
-        </div>
-        <div class="form-group">
-          <input type="button" class="btn btn-primary" ng-click="reset()" value="Reset" />
-          <input type="submit" class="btn btn-primary" ng-click="register(user)" value="Save" />
+          <input type="submit" class="btn btn-primary" ng-click="register(user)" value="Submit" />
         </div>
       </form>
     </div>

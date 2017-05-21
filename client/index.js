@@ -22,13 +22,16 @@ var app = angular.module('mean-retail', ['mean-retail.components', 'ngRoute']);
 app.config(function($routeProvider) {
   $routeProvider.
     when("/register", {
-        templateUrl : "/client/templates/register_account.html"
+        templateUrl : "/client/templates/register_account.html",
+        controller: 'RegisterAccountController'
     })
     .when("/add-brand", {
-        templateUrl : "/client/templates/add_brand.html"
+        templateUrl : "/client/templates/add_brand.html",
+        controller: 'AddBrandController'
     })
     .when("/add-product", {
-        templateUrl : "/client/templates/add_product.html"
+        templateUrl : "/client/templates/add_product.html",
+        controller: "AddProductController"
     })
     .when('/brand/:id', {
       templateUrl: '/client/templates/category_view.html'
@@ -36,5 +39,6 @@ app.config(function($routeProvider) {
     .when('/product/:id', {
       template: '<product-details></product-details>'
     });
+    
 
 });
