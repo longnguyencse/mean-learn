@@ -32,8 +32,7 @@ var account = {
     type: String,
   },
   account_setting: AccountSetting.accountSetting,
-  account_social: AccountSocial.accountSocial,
-  brands: [Brand.brand]
+  account_social: AccountSocial.accountSocial
 };
 
 module.exports = new mongoose.Schema(account);

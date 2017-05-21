@@ -69,7 +69,7 @@ exports.HomeController = function($scope, $http) {
   }, 0);
 };
 
-exports.BrandController = function($scope, $http) {
+exports.BrandController = function($scope, $user, $http) {
   $scope.load = function() {
     $http.
       get('/api/v1/brand').
@@ -80,12 +80,23 @@ exports.BrandController = function($scope, $http) {
 
   $scope.load();
 
+  $scope.addBrand = function(brand) {
+    $scope.brand = angular.copy(brand);
+    $scope.brand.account = $user.user._id;
+
+    $http.
+      post('/api/v1/brand', $scope.brand ).
+      success(function(data) {
+        alert('success!!!');
+      });
+  };
+
   setTimeout(function() {
     $scope.$emit('BrandController');
   }, 0);
 };
 
-exports.BrandDetailsController = function($scope, $http, $routeParams) {
+exports.BrandDetailsController = function($scope, $user, $http, $routeParams) {
   $scope.load = function() {
     var encoded = encodeURIComponent($routeParams.id);
     $http.
@@ -96,6 +107,17 @@ exports.BrandDetailsController = function($scope, $http, $routeParams) {
   };
 
   $scope.load();
+
+  $scope.addProduct = function(product) {
+    $scope.product = angular.copy(product);
+    $scope.product.account = $user.user._id;
+    $scope.product.brand = $scope.brand._id;
+    $http.
+      post('/api/v1/product', $scope.product).
+      success(function(data) {
+        alert("success!!!");
+      });
+  };
 
   setTimeout(function() {
     $scope.$emit('BrandDetailsController');
@@ -231,66 +253,10 @@ exports.ProductDetailsController = function($scope, $routeParams, $http) {
 };
 
 },{}],2:[function(require,module,exports){
-exports.registerAccount = function() {
-  return {
-    controller: 'RegisterAccountController',
-    templateUrl: '/client/templates/register_account.html'
-  };
-};
-
-exports.addBrand = function() {
-  return {
-    controller: 'AddBrandController',
-    templateUrl: '/client/templates/add_brand.html'
-  };
-};
-
-exports.addProduct = function() {
-  return {
-    controller: 'AddProductController',
-    templateUrl: '/client/templates/add_product.html'
-  };
-};
-
-exports.addToCart = function() {
-  return {
-    controller: 'AddToCartController',
-    templateUrl: '/client/templates/add_to_cart.html'
-  };
-};
-
-exports.categoryProducts = function() {
-  return {
-    controller: 'CategoryProductsController',
-    templateUrl: '/client/templates/category_products.html'
-  }
-};
-
-exports.categoryTree = function() {
-  return {
-    controller: 'CategoryTreeController',
-    templateUrl: '/client/templates/category_tree.html'
-  }
-};
-
-exports.checkout = function() {
-  return {
-    controller: 'CheckoutController',
-    templateUrl: '/client/templates/checkout.html'
-  };
-};
-
 exports.navBar = function() {
   return {
     controller: 'NavBarController',
     templateUrl: '/client/templates/nav_bar.html'
-  };
-};
-
-exports.productDetails = function() {
-  return {
-    controller: 'ProductDetailsController',
-    templateUrl: '/client/templates/product_details.html'
   };
 };
 

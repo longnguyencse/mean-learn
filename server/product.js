@@ -27,6 +27,6 @@ module.exports = new mongoose.Schema({
   photo_url: {
     type: String
   },
-  account:Account.account,
-  brand: Brand.brand
+  account: {type: mongoose.Schema.Types.ObjectId, ref: 'Account'},
+  brand: {type: mongoose.Schema.Types.ObjectId, ref: 'Brand'} 
 })

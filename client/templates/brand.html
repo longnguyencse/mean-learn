@@ -8,3 +8,43 @@
     </a>
   </div>
 </div>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h2>Vertical (basic) form</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name: </label>
+          <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" ng-model="brand.brand_name" />
+        </div>
+        <div class="form-group">
+          <label for="logo">Logo: </label>
+          <input type="text" class="form-control" id="logo" name="name" ng-model="brand.logo_url" />
+        </div>
+        <div class="form-group">
+          <label for="address">Address: </label>
+          <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" ng-model="brand.brand_address" />
+        </div>
+        <div class="form-group">
+          <label for="blog">Blog: </label>
+          <input type="text" class="form-control" id="blog" name="blog" ng-model="brand.blog_link" />
+        </div>
+        <div class="form-group">
+          <label for="face">Facebook: </label>
+          <input type="text" class="form-control" id="face" name="face" ng-model="brand.facebook_link" />
+        </div>
+        <div class="form-group">
+          <label for="twitter">Twitter: </label>
+          <input type="text" class="form-control" id="twitter" name="twitter" ng-model="brand.twitter_link" />
+        </div>
+        <div>{{ brand | json }}</div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" ng-click="addBrand(brand)" value="Submit" />
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>

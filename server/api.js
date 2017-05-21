@@ -42,18 +42,29 @@ module.exports = function(wagner) {
 
   api.get('/brand/id/:id', wagner.invoke(function(Brand) {
     return function(req, res) {
-      Brand.findOne({ _id: req.params.id },
-        handleOne.bind(null, 'brand', res));
+      console.log("test");
+      Brand.findOne({ _id: req.params.id })
+        .populate("products")
+        .exec(handleOne.bind(null, 'brand', res));
     };
   }));
 
-  api.post('/product', wagner.invoke(function(Product) {
+  api.post('/product', wagner.invoke(function(Product, Brand) {
     return function(req, res) {
       var product = new Product(req.body);
       product.save(function(err) {
         if (err) res.end('Error!!!');
 
-        res.end("Product added!!!");
+        var brand = Brand.findByIdAndUpdate(
+          product.brand,
+          { $push: { products: product }}, {safe: true, upsert: true},
+          function (err, tank) {
+            if (err) res.end('Error!!!');
+
+            res.end("Product added!!!");
+          }
+        )
+
       })
     }
   }));
@@ -80,8 +91,14 @@ module.exports = function(wagner) {
 
   api.get('/brand', wagner.invoke(function(Brand) {
     return function(req,res) {
+      if(!req.user) {
+        return res.
+          status(status.UNAUTHORIZED).
+          json({error: 'Not logged in'});
+      }
+
       Brand.
-        find()
+        find({account: req.user._id})
         .sort()
         .limit(10).
         exec(handleMany.bind(null, 'brands', res));
@@ -93,8 +110,16 @@ module.exports = function(wagner) {
       Product.
         find()
         .sort()
-        .limit(10).
-        exec(handleMany.bind(null, 'products', res));
+        .exec(handleMany.bind(null, 'products', res));
+    };
+  }));
+
+  api.get('/product/id/:id', wagner.invoke(function(Product) {
+    return function(req, res) {
+      Product.findOne({ _id: req.params.id })
+        .populate('account')
+        .populate('brand')
+        .exec(handleOne.bind(null, 'product', res));
     };
   }));
 

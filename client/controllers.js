@@ -68,7 +68,7 @@ exports.HomeController = function($scope, $http) {
   }, 0);
 };
 
-exports.BrandController = function($scope, $http) {
+exports.BrandController = function($scope, $user, $http) {
   $scope.load = function() {
     $http.
       get('/api/v1/brand').
@@ -79,12 +79,23 @@ exports.BrandController = function($scope, $http) {
 
   $scope.load();
 
+  $scope.addBrand = function(brand) {
+    $scope.brand = angular.copy(brand);
+    $scope.brand.account = $user.user._id;
+
+    $http.
+      post('/api/v1/brand', $scope.brand ).
+      success(function(data) {
+        alert('success!!!');
+      });
+  };
+
   setTimeout(function() {
     $scope.$emit('BrandController');
   }, 0);
 };
 
-exports.BrandDetailsController = function($scope, $http, $routeParams) {
+exports.BrandDetailsController = function($scope, $user, $http, $routeParams) {
   $scope.load = function() {
     var encoded = encodeURIComponent($routeParams.id);
     $http.
@@ -95,6 +106,17 @@ exports.BrandDetailsController = function($scope, $http, $routeParams) {
   };
 
   $scope.load();
+
+  $scope.addProduct = function(product) {
+    $scope.product = angular.copy(product);
+    $scope.product.account = $user.user._id;
+    $scope.product.brand = $scope.brand._id;
+    $http.
+      post('/api/v1/product', $scope.product).
+      success(function(data) {
+        alert("success!!!");
+      });
+  };
 
   setTimeout(function() {
     $scope.$emit('BrandDetailsController');

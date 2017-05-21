@@ -1,8 +1,77 @@
 Brand details
 
-{{ brand }}
+<div class="brand-info">
+  <ul>
+    <li><img src="{{ brand.logo_url }}" alt="{{ brand.brand_name }}"/></li>
+    <li>establisted: {{ brand.establisted }}</li>
+    <li>create_time: {{ brand.create_time }}</li>
+    <li>update_time: {{ brand.update_time }}</li>
+    <li>brand_address: {{ brand.brand_address }}</li>
+    <li>post_code: {{ brand.post_code }}</li>
+    <li>fax: {{ brand.fax }}</li>
+    <li>phone: {{ brand.phone }}</li>
+    <li>email: {{ brand.email }}</li>
+    <li>country: {{ brand.country }}</li>
+    <li>country_code: {{ brand.country_code }}</li>
+    <li><a href="{{ brand.blog_link }}">blog_link</a></li>
+    <li><a href="{{ brand.facebook_link }}">facebook_link</a></li>
+    <li><a href="{{ brand.twitter_link }}">twitter_link</a></li>
+    <li>g_lat: {{ brand.g_lat }}</li>
+    <li>g_long: {{ brand.g_long }}</li>
+    <li>brand_name: {{ brand.brand_name }}</li>
+  </ul>
+</div>
 
-<div class="brand-info"></div>
-<div class="products">
 
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <h2>Vertical (basic) form</h2>
+      <form>
+        <div class="form-group">
+          <label for="title">Title: </label>
+          <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" ng-model="product.title" />
+        </div>
+        <div class="form-group">
+          <label for="type">Type: </label>
+          <input type="text" class="form-control" id="type" name="type" ng-model="product.product_type" />
+        </div>
+        <div class="form-group">
+          <label for="price">Price: </label>
+          <input type="text" class="form-control" id="price" placeholder="Enter price" name="price" ng-model="product.price" />
+        </div>
+        <div class="form-group">
+          <label for="photo">Photo: </label>
+          <input type="text" class="form-control" id="photo" name="photo" ng-model="product.photo_url" />
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" ng-click="addProduct(product)" value="Submit" />
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+</div>
+
+
+
+
+<div class="product-wrapper">
+  <div style="clear: both"></div>
+  <div class="product" ng-repeat="product in brand.products">
+    <div class="product-image">
+      <img ng-src="{{product.photo_url}}" />
+    </div>
+    <div class="product-title">
+      <a ng-href="#/product/{{product._id}}">
+        {{product.title}}
+      </a>
+    </div>
+    <div class="product-price">
+      {{product.price}}
+    </div>
+  </div>
+  <div style="clear: both"></div>
 </div>

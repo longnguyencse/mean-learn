@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
 
 var brand = {
+  brand_name: {
+    type: String
+  },
   logo_url: {
     type: String
   },
@@ -49,9 +52,8 @@ var brand = {
   g_long: {
     type: String
   },
-  brand_name: {
-    type: String
-  }
+  account: {type: mongoose.Schema.Types.ObjectId, ref: 'Account'},
+  products: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}]
 };
 
 module.exports = new mongoose.Schema(brand);
