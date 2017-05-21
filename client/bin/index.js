@@ -8,19 +8,28 @@ exports.RegisterAccountController = function($scope, $http) {
         alert("success!!!");
       });
   };
-  
+
   setTimeout(function() {
     $scope.$emit('RegisterAccountController');
   }, 0);
 };
 
-exports.AddBrandController = function($scope, $http) {
+exports.AddBrandController = function($scope, $http, $user, $timeout) {
   $scope.addBrand = function(brand) {
+
     $scope.brand = angular.copy(brand);
+    $user.user.brands.push($scope.brand);
+
     $http.
-      post('/api/v1/brand', $scope.brand).
+      put('/api/v1/me/brand', { brands: $user.user.brands }).
       success(function(data) {
-        alert("success!!!");
+        $user.loadUser();
+        $scope.success = true;
+        alert('success!!!');
+
+        $timeout(function() {
+          $scope.success = false;
+        }, 5000);
       });
   };
 
@@ -41,6 +50,55 @@ exports.AddProductController = function($scope, $http) {
 
   setTimeout(function() {
     $scope.$emit('AddProductController');
+  }, 0);
+};
+
+exports.HomeController = function($scope, $http) {
+  $scope.load = function() {
+    $http.
+      get('/api/v1/product').
+      success(function(data) {
+        $scope.products = data.products;
+      });
+  };
+
+  $scope.load();
+
+  setTimeout(function() {
+    $scope.$emit('HomeController');
+  }, 0);
+};
+
+exports.BrandController = function($scope, $http) {
+  $scope.load = function() {
+    $http.
+      get('/api/v1/brand').
+      success(function(data) {
+        $scope.brands = data.brands;
+      });
+  };
+
+  $scope.load();
+
+  setTimeout(function() {
+    $scope.$emit('BrandController');
+  }, 0);
+};
+
+exports.BrandDetailsController = function($scope, $http, $routeParams) {
+  $scope.load = function() {
+    var encoded = encodeURIComponent($routeParams.id);
+    $http.
+      get('/api/v1/brand/id/' + encoded).
+      success(function(data) {
+        $scope.brand = data.brand;
+      });
+  };
+
+  $scope.load();
+
+  setTimeout(function() {
+    $scope.$emit('BrandDetailsController');
   }, 0);
 };
 
@@ -260,8 +318,24 @@ var app = angular.module('mean-retail', ['mean-retail.components', 'ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider.
-    when("/register", {
-        templateUrl : "/client/templates/register_account.html",
+    when("/signup", {
+        templateUrl : "/client/templates/signup.html",
+        controller: 'RegisterAccountController'
+    })
+    .when("/login", {
+        templateUrl : "/client/templates/login.html",
+        controller: 'RegisterAccountController'
+    })
+    .when("/", {
+        templateUrl : "/client/templates/home.html",
+        controller: 'HomeController'
+    })
+    .when("/brand", {
+        templateUrl : "/client/templates/brand.html",
+        controller: 'BrandController'
+    })
+    .when("/product", {
+        templateUrl : "/client/templates/product.html",
         controller: 'RegisterAccountController'
     })
     .when("/add-brand", {
@@ -273,12 +347,13 @@ app.config(function($routeProvider) {
         controller: "AddProductController"
     })
     .when('/brand/:id', {
-      templateUrl: '/client/templates/category_view.html'
+      templateUrl: '/client/templates/brand_detail.html',
+      controller: "BrandDetailsController"
     })
     .when('/product/:id', {
       template: '<product-details></product-details>'
     });
-    
+
 
 });
 

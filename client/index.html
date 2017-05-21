@@ -13,22 +13,11 @@
 
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/client/public/css/style.css">
   </head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#register">Register Account</a></li>
-          <li><a href="#add-brand">Add Brand</a></li>
-          <li><a href="#add-product">Add Product</a></li>
-        </ul>
-      </div>
-    </nav>
-    <div ng-view class="container">
+    <nav-bar></nav-bar>
+    <div ng-view>
     </div>
   </body>
 </html>

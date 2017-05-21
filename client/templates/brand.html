@@ -1,0 +1,10 @@
+<div class="brand" ng-repeat="brand in brands">
+  <div class="brand-logo">
+    <img ng-src="{{brand.logo_url}}" />
+  </div>
+  <div class="brand-name">
+    <a ng-href="#/brand/{{brand._id}}">
+      {{brand.brand_name}}
+    </a>
+  </div>
+</div>

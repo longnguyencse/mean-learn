@@ -1,25 +1,18 @@
-<div class="nav-bar">
-  <div class="nav-bar-contents">
-    <div class="logo">
-      <img src="/public/images/mean-retail-logo.png" />
+<nav class="navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/">WebSiteName</a>
     </div>
-    <div class="title">
-      MEAN Retail
-    </div>
-    <div class="user-info">
-      <div class="checkout" ng-show="user.user">
-        <a ng-href="#/checkout">
-          <i class="fa fa-shopping-cart"></i>
-        </a>
-      </div>
-      <div class="user" ng-show="user.user">
+    <ul class="nav navbar-nav">
+      <li><a href="#/brand">Brand</a></li>
+      <li><a href="#/product">Product</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li ng-show="!user.user"><a href="#/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li ng-show="!user.user"><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li ng-show="user.user">
         <img ng-src="{{user.user.avatar_url}}" />
-      </div>
-      <div class="login" ng-show="!user.user">
-        <a href="/auth/facebook?redirect=%2Fclient">
-          <img src="//i.stack.imgur.com/LKMP7.png">
-        </a>
-      </div>
-    </div>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>

@@ -195,7 +195,7 @@ a {
   padding-bottom: 10px;
 }
 
-.product .product-name {
+.product .product-title {
   max-height: 2em;
   height: 2em;
   overflow: hidden;
@@ -207,7 +207,7 @@ a {
   margin-bottom: 5px;
 }
 
-.product .product-cost {
+.product .product-price {
   font-size: 0.75em;
   color: #666666;
   margin-top: 0.25em;

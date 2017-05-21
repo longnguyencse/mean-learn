@@ -5,10 +5,6 @@
       <h2>Vertical (basic) form</h2>
       <form>
         <div class="form-group">
-          <label for="name">Name: </label>
-          <input type="text" class="form-control" id="name" placeholder="Enter name" name="name" ng-model="user.name" required />
-        </div>
-        <div class="form-group">
           <label for="email">Email: </label>
           <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" ng-model="user.email" required />
         </div>
@@ -17,22 +13,20 @@
           <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" ng-model="user.password" required/>
         </div>
         <div class="form-group">
-          <label for="cpwd">Confirm Password: </label>
-          <input type="password" class="form-control" id="cpwd" placeholder="Confirm password" name="cpwd" required/>
-        </div>
-        <div>{{ user | json }}</div>
-        <div class="form-group">
-          <input type="submit" class="btn btn-primary" ng-click="register(user)" value="Submit" />
+          <input type="submit" class="btn btn-primary btn-block" ng-click="register(user)" value="Login" />
         </div>
       </form>
-      <div class="user-info">
-        <div class="user" ng-show="user.user">
-          <img ng-src="{{user.user.avatar_url}}" />
-        </div>
-        <div class="login" ng-show="!user.user">
+      <hr />
+      <div class="row">
+        <div class="col-sm-6">
           <a href="/auth/facebook?redirect=%2Fclient">
-            <img src="//i.stack.imgur.com/LKMP7.png">
+            <button class="btn btn-primary btn-block">
+              Login with facebook
+            </button>
           </a>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-primary btn-block">Signup</button>
         </div>
       </div>
     </div>
