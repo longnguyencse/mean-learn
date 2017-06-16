@@ -30,7 +30,12 @@ npm install --save  es6-promise@^3.0.2
 
 Other lib
 *** Run:
-node server.js
+cd client
+client> npm install
+******************************
+cd server
+server> node index.js
+http://localhost:3000/client/#/
 
 #TODO
 Estimate time: 24 days (31/5/2017)
