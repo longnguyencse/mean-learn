@@ -1,0 +1,4 @@
+PHP v5.6.24
+Laverel v5.4
+HTML5, CSS3
+MySQL (PHPMySQL XAMPP)
